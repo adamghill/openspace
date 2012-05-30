@@ -6,26 +6,26 @@ The problem
 =
 The DOM is a terrible place to store data about your application. You know what might be better? Client-side models that drive the UI.
 
-Backbone.js [site](http://backbonejs.com/)
+[Backbone.js](http://backbonejs.com/)
 =
 Minimal framework for defining routes, models, views and controller-like substances.
 
 Other frameworks
 =
 
-Spine.js [site](http://spinejs.com/)
+[Spine.js](http://spinejs.com/)
 -
 Let's build a framework.... in CoffeeScript!
 
-Ember.js [site](http://emberjs.com/)
+[Ember.js](http://emberjs.com/)
 -
 Hey! I have opinions! Here's some opinions in your opinions.
 
-SproutCore http://emberjs.com/
+[SproutCore](http://emberjs.com/)
 -
 HTML5 all in your browser.
 
-Knockout.js [site](http://knockoutjs.com/)
+[Knockout.js](http://knockoutjs.com/)
 -
 MVVM is a mouthful.
 
