@@ -1,6 +1,6 @@
 Hello everybody.
 =
-JavaScript is hard.
+JavaScript is hard. Scratch that. Client-side JavaScript is hard.
 
 The problem
 =
