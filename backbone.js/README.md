@@ -31,18 +31,22 @@ MVVM is a mouthful.
 
 Tutorials
 =
-[backbonetutorials.com](http://backbonetutorials.com/)
-
 [Developing Backbone.js Applications](http://addyosmani.github.com/backbone-fundamentals/)
 
-[Hello Backbone.js](http://arturadib.com/hello-backbonejs/)
+[backbonetutorials.com](http://backbonetutorials.com/)
+
+[Compare a bunch of client-side MVC frameworks](http://addyosmani.github.com/todomvc/)
 
 Plugins
 =
 [backbone.validation](https://github.com/thedersen/backbone.validation)
+
+[backbone.model-binding](https://github.com/derickbailey/backbone.modelbinding)
 
 Frameworks on top of Backbone.js
 =
 [Chaplin](https://github.com/moviepilot/chaplin)
 
 [Thorax](https://github.com/walmartlabs/thorax)
+
+[backbone.marionette](https://github.com/derickbailey/backbone.marionette)
