@@ -11,15 +11,14 @@ $(function(){
 
   // Our basic **Todo** model has `title`, `order`, and `done` attributes.
   var Todo = Backbone.Model.extend({
-
+	
     // Default attributes for the todo item.
     defaults: function() {
       return {
         title: "empty todo...",
         order: Todos.nextOrder(),
         done: false,
-		date: new Date(),
-		dueDate: ''
+		date: Todos.getCurrentDateAndTime()
       };
     },
 
@@ -28,6 +27,7 @@ $(function(){
       if (!this.get("title")) {
         this.set({"title": this.defaults.title});
       }
+
     },
 
     // Toggle the `done` state of this todo item.
@@ -72,6 +72,38 @@ $(function(){
       return this.last().get('order') + 1;
     },
 
+	getCurrentDateAndTime: function(){
+		var date = new Date();
+		var day = date.getDate(); 
+		var month = date.getMonth();
+		var year = date.getFullYear();
+		
+		var timeOfDay = "";
+		var hour = date.getHours();
+
+		if (hour < 12){
+		   timeOfDay = "AM";
+		} else {
+		   timeOfDay = "PM";
+		}
+		if (hour == 0){
+		   hour = 12;
+		}
+		if (hour > 12){
+		   hour = hour - 12;
+		}
+
+		var min = date.getMinutes();
+		
+		min = min + "";
+
+		if (min.length == 1) {
+		   min = "0" + min;
+		}
+
+		return day + "-" + month + "-" + year + " at " + hour + ":" + min + " " + timeOfDay;
+	},
+
     // Todos are sorted by their original insertion order.
     comparator: function(todo) {
       return todo.get('order');
@@ -115,7 +147,6 @@ $(function(){
       this.$el.html(this.template(this.model.toJSON()));
       this.$el.toggleClass('done', this.model.get('done'));
       this.titleInput = this.$('.title');
-      this.dueDateInput = this.$('.dueDate');
       return this;
     },
 
@@ -133,9 +164,8 @@ $(function(){
     // Close the `"editing"` mode, saving changes to the todo.
     close: function() {
       var titleValue = this.titleInput.val();
-      var dueDateValue = this.dueDateInput.val();
       if (!titleValue) this.clear();
-      this.model.save({title: titleValue, dueDate: dueDateValue});
+      this.model.save({title: titleValue});
       this.$el.removeClass("editing");
     },
 
