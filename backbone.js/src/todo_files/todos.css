@@ -69,7 +69,6 @@ body {
 
 #todo-list li {
 	padding:5px;
-	width:90%;
 	position: relative;
 	font-size: 24px;
 	background:#eee;
@@ -88,7 +87,7 @@ body {
 
 #todo-list .destroy {
 	position: absolute;
-	right: -40px;
+	right: 10px;
 	top: 30px;
 	display: none;
 	cursor: pointer;
