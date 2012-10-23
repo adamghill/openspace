@@ -1,0 +1,22 @@
+{
+  "name": "02-modules",
+  "description": "Some awesome module samples.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Adam Hill",
+    "email": "adamghill@yahoo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/adamghill/openspace.git"
+  },
+  "bugs": {
+    "url": "http://github.com/adamghill/openspace/issues"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "dependencies": {
+    "request": "2.11.x"
+  }
+}
