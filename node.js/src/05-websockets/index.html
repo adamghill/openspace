@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+	  var socket = io.connect('http://localhost');
+
+	  socket.on('data', function(data) {
+	  	$('#uptime').html(data.uptime);
+	  	$('#loadavg').append('<div>' + data.loadavg + '</div>');
+	  });
+
+	  $(function() {
+		  $('#start').click(function() {
+		  	socket.emit('start');
+		  	return false;
+		  });
+
+		  $('#stop').click(function() {
+		  	socket.emit('stop');
+		  	return false;
+		  });
+		});
+	</script>
+</head>
+<body>
+	<a href="#" id="start">Start</a>
+	<a href="#" id="stop">Stop</a>
+
+	<div>
+		Uptime: <span id="uptime"></span>
+	</div>
+
+	<div id="loadavg"></div>
+</body>
+</html>
