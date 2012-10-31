@@ -1,89 +1,67 @@
 <!DOCTYPE html>
 <!-- saved from url=(0047)http://backbonejs.org/examples/todos/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta charset="utf-8">
-        <title>Backbone.js Todos</title>
-          <link rel="stylesheet" href="http://backbonejs.org/examples/todos/todos.css">
-          <body>
-              
-              <div id="todoapp">
-                    
-                    <header>
-                          <h1>Todos</h1>
-                                <input id="new-todo" type="text" placeholder="What needs to be done?">
-                                    </header>
+<meta charset="utf-8">
+<title>Backbone.js Todos.</title>
+<link rel="stylesheet" href="./todo_files/todos.css">
+<body>
+<div id="todoapp">
+	<header>
+		<h1>Todos</h1>
+		<input id="new-todo" type="text" placeholder="What needs to be done?">
+	</header>
 
-                                        <section id="main" style="display: block; ">
-                                              <input id="toggle-all" type="checkbox">
-                                                    <label for="toggle-all">Mark all as complete</label>
-                                                          <ul id="todo-list"><li class="done">
-                                                                <div class="view">
-                                                                        <input class="toggle" type="checkbox" checked="checked">
-                                                                              <label>Buy things</label>
-                                                                                    <a class="destroy"></a>
-                                                                                        </div>
-                                                                                            <input class="edit" type="text" value="Buy things">
-                                                                                              </li><li class="done">
-                                                                                                  <div class="view">
-                                                                                                          <input class="toggle" type="checkbox" checked="checked">
-                                                                                                                <label>Do more stuff</label>
-                                                                                                                      <a class="destroy"></a>
-                                                                                                                          </div>
-                                                                                                                              <input class="edit" type="text" value="Do more stuff">
-                                                                                                                                </li></ul>
-                                                                                                                                    </section>
+	<section id="main" style="display: block; ">
+		<input id="toggle-all" type="checkbox">
+		<label for="toggle-all">Mark all as complete</label>
+		<ul id="todo-list"></ul>
+	</section>
 
-                                                                                                                                        <footer style="display: block; ">
-                                                                                                                                            
-                                                                                                                                              <a id="clear-completed">Clear 2 completed items</a>
-                                                                                                                                                  
-                                                                                                                                                  <div class="todo-count"><b>0</b> items left</div>
-                                                                                                                                                    </footer>
-                                                                                                                                                        
-                                                                                                                                                      </div>
-                                                                                                                                                        
-                                                                                                                                                        <div id="instructions">
-                                                                                                                                                              Double-click to edit a todo.
-                                                                                                                                                                </div>
-                                                                                                                                                                  
-                                                                                                                                                                  <div id="credits">
-                                                                                                                                                                        Created by
-                                                                                                                                                                            <br>
-                                                                                                                                                                                <a href="http://jgn.me/">Jérôme Gravel-Niquet</a>.
-                                                                                                                                                                                    <br>Rewritten by: <a href="http://addyosmani.github.com/todomvc">TodoMVC</a>.
-                                                                                                                                                                                      </div>
+	<footer style="display: block;">
+		<a id="clear-completed">Clear 2 completed items</a>
+        <div class="todo-count"><b>0</b> items left</div>
+	</footer>
+                  
+</div>
+                  
+<div id="instructions">
+	Double-click to edit a todo.
+</div>
 
-                                                                                                                                                                                        <script src="./todo_files/json2.js"></script>
-                                                                                                                                                                                          <script src="./todo_files/jquery-1.7.1.js"></script>
-                                                                                                                                                                                            <script src="./todo_files/underscore-1.3.1.js"></script>
-                                                                                                                                                                                              <script src="./todo_files/backbone.js"></script>
-                                                                                                                                                                                                <script src="./todo_files/backbone-localstorage.js"></script>
-                                                                                                                                                                                                  <script src="./todo_files/todos.js"></script>
+<div id="credits">
+	Created by<br><a href="http://jgn.me/">Jérôme Gravel-Niquet</a>.<br>Rewritten by: <a href="http://addyosmani.github.com/todomvc">TodoMVC</a>.
+</div>
 
-                                                                                                                                                                                                    <!-- Templates -->
+<script src="./todo_files/json2.js"></script>
+<script src="./todo_files/jquery-1.7.1.js"></script>
+<script src="./todo_files/underscore-1.3.1.js"></script>
+<script src="./todo_files/backbone.js"></script>
+<script src="./todo_files/backbone-localstorage.js"></script>
+<script src="./todo_files/todos.js"></script>
 
-                                                                                                                                                                                                      <script type="text/template" id="item-template">
-                                                                                                                                                                                                            <div class="view">
-                                                                                                                                                                                                                    <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
-                                                                                                                                                                                                                          <label><%= title %></label>
-                                                                                                                                                                                                                              <p><%= date %></p>
-                                                                                                                                                                                                                                  <a class="destroy"></a>
-                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                        <div class="edit">
-                                                                                                                                                                                                                                              <input class="title" type="text" value="<%= title %>" />
-                                                                                                                                                                                                                                                  <label for="dueDate">Due Date</label>
-                                                                                                                                                                                                                                                      <input type="text" id="dueDate" name="dueDate" value="<% dueDate %>" />
-                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                          </script>
+<!-- Templates -->
 
-                                                                                                                                                                                                                                                            <script type="text/template" id="stats-template">
-                                                                                                                                                                                                                                                                  <% if (done) { %>
-                                                                                                                                                                                                                                                                          <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
-                                                                                                                                                                                                                                                                              <% } %>
-                                                                                                                                                                                                                                                                                <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
-                                                                                                                                                                                                                                                                                  </script>
+<script type="text/template" id="item-template">
+<div class="view"> 
+	<dl>
+		<dt>
+			<input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+			<label><%= title %></label>
+			<a class="destroy"></a>
+		</dt>
+		<dd>	
+			Added on <%= date %> 
+		</dd>	
+	</dl>	
+</div>
+<div class="edit">
+	<input class="title" type="text" value="<%= title %>" />
+</div>
+</script>
 
-                                                                                                                                                                                                                                                                                </div>  
-                                                                                                                                                                                                                                                                              </body>
-                                                                                                                                                                                                                                                                            </html>
-
+<script type="text/template" id="stats-template">
+<% if (done) { %>
+<a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+<% } %>
+<div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+</script>
