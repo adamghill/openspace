@@ -4,22 +4,19 @@ var db = {};
 
 function get(key) {
 	if (db[key]) {
-		eventEmitter.emit('onGet', db[key]);
+		setTimeout(function() {
+			eventEmitter.emit('onGet', db[key]);
+		}, 10);
 	} else {
 		eventEmitter.emit('onError', new Error('Key is not valid.'));
 	}
 }
 
 function set(key, value) {
-	if (db[key]) {
-		// Update value
+	setTimeout(function() {
 		db[key] = value;
-		eventEmitter.emit('onUpdate', key);
-	} else {
-		// Create
-		db[key] = value;
-		eventEmitter.emit('onCreate', key);
-	}
+		eventEmitter.emit('onSet', key);
+	}, 100);
 }
 
 exports.get = get;
