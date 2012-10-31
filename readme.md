@@ -1,1 +1,1 @@
-The Motley Fool
+The Motley Fool's OpenSpaces are a chance for developers to get together and share some knowledge. Or something.
