@@ -1,0 +1,25 @@
+{
+  "name": "openspace-nodejs",
+  "description": "OpenSpace",
+  "version": "0.0.1",
+  "author": {
+    "name": "Adam Hill",
+    "email": "adamghill@yahoo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/adamghill/openspace.git"
+  },
+  "bugs": {
+    "url": "http://github.com/adamghill/openspace/issues"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "dependencies": {
+    "request": "2.11.x",
+    "rsvp": "1.0.x",
+    "async": "0.1.x",
+    "socket.io": "0.9.x"
+  }
+}
