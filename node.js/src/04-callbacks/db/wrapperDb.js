@@ -11,10 +11,12 @@ function setValues(keys, values, callback) {
 		db.set(key, values[idx], function(err, key) {
 			if (err) return callback(err);
 			returnKeys.push(key);
+
+			if (returnKeys.length === keys.length) {
+				return callback(null, returnKeys);
+			}
 		});
 	});
-
-	return callback(null, returnKeys);
 }
 
 function getValues(keys, callback) {
@@ -25,10 +27,12 @@ function getValues(keys, callback) {
 			if (err) return callback(err);
 
 			values.push(value);
+
+			if (values.length === keys.length) {
+				return callback(null, values);
+			}
 		})
 	});
-
-	return callback(null, values);
 }
 
 exports.setValues = setValues;
